@@ -82,7 +82,7 @@ services:
         links:
             - sample-project-db:sample-project-db
             - sample-project-cache:sample-project-cache
-        command: bash -c "pip3 install -r requirements.txt && celery -A sample_project worker"
+        command: bash -c "pip3 install -r requirements.txt && python3 manage.py celery"
         networks:
             sample-project-net:
                 ipv4_address: 172.20.1.5
