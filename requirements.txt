@@ -1,0 +1,5 @@
+django==2.2
+celery[redis]
+redis
+django-redis 
+mysqlclient
