@@ -75,10 +75,27 @@ WSGI_APPLICATION = 'sample_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sample_database',
+        'USER': 'sample',
+        'PASSWORD': 'samplepassword',
+        'HOST': 'sample-project-db',
+        'PORT': '3306',
     }
 }
+
+CACHES = {  
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://sample-project-cache:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+CELERY_BROKER_URL = 'redis://:samplepassword@sample-project-cache:6379/0'
+
 
 
 # Password validation
